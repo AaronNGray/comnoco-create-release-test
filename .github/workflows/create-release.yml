@@ -9,7 +9,7 @@ name: Create Release
 permissions:
   contents: write
   checks: write
-  actions: read
+  actions: write
   issues: read
   packages: write
   pull-requests: read
