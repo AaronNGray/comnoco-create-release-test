@@ -47,9 +47,18 @@ jobs:
 #          asset_path: ./README.md
 #          asset_name: README.md
 #          asset_content_type: application/text
-      - name: Upload release assets
-        uses: AaronNGray/upload-assets@0.4.3
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+#     - name: Upload release assets
+#        uses: AaronNGray/upload-assets@0.4.3
+#        env:
+#          GITHUB_TOKEN: ${{ github.token }}
+#        with:
+#          asset_paths: '["README.md", "LICENSE"]'
+      - uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          asset_paths: '["README.md", "LICENSE"]'
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            README.md
+            LICENSE
