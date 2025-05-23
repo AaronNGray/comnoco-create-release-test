@@ -55,13 +55,21 @@ jobs:
 #          asset_paths: |
 #            README.md
 #            LICENSE
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - name: Upload release assets
+        uses: AaronNGray/upload-assets@0.4.1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          prerelease: true
-          title: "Development Build"
-          files: |
+          asset_paths: |
             README.md
             LICENSE
+#      - uses: "marvinpinto/action-automatic-releases@latest"
+#        with:
+#          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+#          automatic_release_tag: "latest"
+#          upload_url: ${{ steps.create_release.outputs.upload_url }}
+#          prerelease: true
+#          title: "Development Build"
+#          files: |
+#            README.md
+#            LICENSE
